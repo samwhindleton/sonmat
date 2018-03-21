@@ -45,8 +45,8 @@ app.use(session(
 
 // Index  : GET    '/'                1/7 |
 app.get( '/' , ( req , res ) => {
-  res.send('Hello, World!');
-  // res.render('index.ejs');
+  // res.send('Hello, World!');
+  res.render('index.ejs');
 });
 
 
