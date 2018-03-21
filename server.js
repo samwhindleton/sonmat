@@ -29,6 +29,28 @@ app.use(session(
 
 
 // ----------------------------------------
+// | ROUTES                               |
+// ----------------------------------------
+// --------------------                   |
+// 7 Restful Routes   |                   |
+// --------------------                   |
+// Index  : GET    '/'                1/7 |
+// Show   : GET    '/:id'             2/7 |
+// New    : GET    '/new'             3/7 |
+// Create : POST   '/'                4/7 |
+// Edit   : GET    '/:id/edit'        5/7 |
+// Update : PUT    '/:id'             6/7 |
+// Delete : DELETE '/:id'             7/7 |
+// ----------------------------------------
+
+// Index  : GET    '/'                1/7 |
+app.get( '/' , ( req , res ) => {
+  res.send('Hello, World!');
+  // res.render('index.ejs');
+});
+
+
+// ----------------------------------------
 // | DATABASE                             |
 // ----------------------------------------
 mongoose.connect('mongodb://localhost:27017/' + 'sonmat');
