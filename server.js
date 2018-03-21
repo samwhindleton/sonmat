@@ -26,3 +26,20 @@ app.use(session(
     saveUninitialized: false
   }
 ));
+
+
+// ----------------------------------------
+// | DATABASE                             |
+// ----------------------------------------
+mongoose.connect('mongodb://localhost:27017/' + 'sonmat');
+mongoose.connection.once('open', () => {
+  console.log('The Goose is Loose!');
+});
+
+
+// ----------------------------------------
+// | LISTENER                             |
+// ----------------------------------------
+app.listen(3000, () => {
+  console.log('Now Listening on Port 3000');
+});
