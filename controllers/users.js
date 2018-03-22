@@ -27,6 +27,20 @@ const User = require('../models/users.js');
 // Delete : DELETE '/:id'             7/7 |
 // ----------------------------------------
 
+// Create : POST   '/'                4/7 |
+// Create new user
+router.post('/', (req, res) => {
+  // res.send(req.body);
+
+  User.create(req.body, (error, user) => {
+    if (error) {
+      res.send (error);
+    } else {
+      // res.send('Welcome ' + user.username + '!');
+      res.render('./user/index.ejs', {user:user});
+    }
+  });
+});
 
 // ----------------------------------------
 // | MODULE EXPORTS                       |
