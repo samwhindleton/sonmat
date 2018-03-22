@@ -27,22 +27,41 @@ const User = require('../models/users.js');
 // Delete : DELETE '/:id'             7/7 |
 // ----------------------------------------
 
+router.get('/', (req, res) => {
+  // res.send('sessions new page');
+  res.render('user/index.ejs');
+});
+
 // Create : POST   '/'                4/7 |
-// Create new user
+// User login
 router.post('/', (req, res) => {
   // res.send(req.body);
 
-  // Encrypt password on Create new user
-  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+  // User.findOne(
+  //   {
+  //     username: req.body.username
+  //   }, (error, foundUser) => {
+  //     if (req.body.password == foundUser.password) {
+  //       res.send('logged in');
+  //     } else {
+  //       res.send('wrong password');
+  //     };
+  //   }
+  // );
 
-  User.create(req.body, (error, user) => {
-    if (error) {
-      res.send (error);
-    } else {
-      // res.send('Welcome ' + user.username + '!');
-      res.render('./user/index.ejs', {user:user});
+  // Compare password on login
+  User.findOne(
+    {
+      username: req.body.username
+    }, (error, foundUser) => {
+      if (bcrypt.compareSync (req.body.password, foundUser.password)) {
+        req.session.currentuser = foundUser;
+        res.render('./user/index.ejs', {user:foundUser});
+      } else {
+        res.send('wrong password');
+      };
     }
-  });
+  );
 });
 
 // ----------------------------------------
