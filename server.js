@@ -44,9 +44,19 @@ app.use(session(
 // ----------------------------------------
 
 // Index  : GET    '/'                1/7 |
-app.get( '/' , ( req , res ) => {
+app.get( '/' , (req, res) => {
   // res.send('Hello, World!');
   res.render('index.ejs');
+});
+
+// GET    '/login'                        |
+app.get( '/login' , (req, res) => {
+  res.send('users login in page');
+});
+
+// GET    '/signup'                       |
+app.get( '/signup' , (req, res) => {
+  res.send('users signup page');
 });
 
 
