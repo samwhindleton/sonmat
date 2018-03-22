@@ -51,12 +51,14 @@ app.get( '/' , (req, res) => {
 
 // GET    '/login'                        |
 app.get( '/login' , (req, res) => {
-  res.send('users login in page');
+  // res.send('users login in page');
+  res.render('login.ejs');
 });
 
 // GET    '/signup'                       |
 app.get( '/signup' , (req, res) => {
-  res.send('users signup page');
+  // res.send('users sign up page');
+  res.render('signup.ejs');
 });
 
 
