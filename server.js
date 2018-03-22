@@ -34,6 +34,9 @@ app.use(session(
 // user
 const userController = require('./controllers/users.js');
 app.use('/user', userController);
+// register
+const registerController = require('./controllers/register.js');
+app.use('/register', registerController);
 
 
 // ----------------------------------------
