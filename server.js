@@ -76,7 +76,8 @@ app.get( '/signup' , (req, res) => {
 // ----------------------------------------
 // | DATABASE                             |
 // ----------------------------------------
-mongoose.connect('mongodb://localhost:27017/' + 'sonmat');
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/' + 'sonmat';
+mongoose.connect(mongoURI);
 mongoose.connection.once('open', () => {
   console.log('The Goose is Loose!');
 });
