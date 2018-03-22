@@ -32,6 +32,9 @@ const User = require('../models/users.js');
 router.post('/', (req, res) => {
   // res.send(req.body);
 
+  // Encrypt password on Create new user
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+
   User.create(req.body, (error, user) => {
     if (error) {
       res.send (error);
