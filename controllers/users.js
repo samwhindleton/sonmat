@@ -38,20 +38,29 @@ router.get('/new', (req, res) => {
 // Create new user
 router.post('/', (req, res) => {
   // res.send(req.body);
+  User.findOne(
+    {
+      username: req.body.username
+    }, (error, foundUser) => {
+      if (foundUser) {
+        res.send('username already taken');
+      } else {
+        // Encrypt password on Create/register new user
+        req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 
-  // Encrypt password on Create/register new user
-  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-
-  User.create(req.body, (error, createdUser) => {
-    if (error) {
-      res.send (error);
-    } else {
-      // res.send('Welcome ' + user.username + '!');
-      req.session.currentUser = createdUser;
-      // res.render('./index.ejs', {currentUser:createdUser});
-      res.redirect('./')
-    };
-  });
+        User.create(req.body, (error, createdUser) => {
+          if (error) {
+            res.send (error);
+          } else {
+            // res.send('Welcome ' + user.username + '!');
+            req.session.currentUser = createdUser;
+            // res.render('./index.ejs', {currentUser:createdUser});
+            res.redirect('./')
+          };
+        });
+      };
+    }
+  );
 });
 
 // ----------------------------------------
