@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Logged In Page</h1>
+
+      <h1><%=currentUser.username%> user page</h1>
+
+      <form action="/session?_method=DELETE" method="POST">
+        <button class="button" type="submit" formmethod="POST">log out</button>
+      </form>
+
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <% include ../partials/footer %>
+    <!-- JavaScript -->
+    <% include ../partials/js %>
+  </body>
+</html>

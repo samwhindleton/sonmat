@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Sign Up | Sonmat</title>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sign Up Page</h1>
+
+      <!-- sign up -->
+      <div class="row">
+        <form action="/user" method="POST">
+          <!-- username -->
+          <input type="text" name="username" placeholder="username" required>
+          <!-- password -->
+          <input type="text" name="password" placeholder="password" required>
+          <!-- create/submit -->
+          <button class="button" type="submit" formmethod="POST">sign up</button>
+        </form>
+
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <% include ../partials/footer %>
+    <!-- JavaScript -->
+    <% include ../partials/js %>
+  </body>
+</html>
