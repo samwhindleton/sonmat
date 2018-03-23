@@ -14,15 +14,31 @@
         </div>
         <!-- login/signup buttons -->
         <div class="two columns">
-          <!-- login -->
-          <form action="/login" method="GET">
-            <button class="button" type="submit" formmethod="GET">log in</button>
-          </form>
-          <!-- signup -->
-          <form action="/signup" method="GET">
-            <button class="button" type="submit" formmethod="GET">sign up</button>
-          </form>
+          <% if (currentUser) { %>
+            <form action="/session?_method=DELETE" method="POST">
+              <button class="button" type="submit" formmethod="POST">log out</button>
+            </form>
+          <% } else { %>
+            <!-- login -->
+            <form action="/session/new" method="GET">
+              <button class="button" type="submit" formmethod="GET">log in</button>
+            </form>
+            <!-- signup -->
+            <form action="/user/new" method="GET">
+              <button class="button" type="submit" formmethod="GET">sign up</button>
+            </form>
+          <% } %>
         </div>
+      </div>
+
+      <div class="row">
+        <h1>
+          <% if (currentUser) { %>
+            Welcome <%=currentUser.username%>!
+          <% } else { %>
+            Welcome!
+          <% } %>
+        </h1>
       </div>
 
     </div>
