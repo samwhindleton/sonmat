@@ -27,41 +27,31 @@ const User = require('../models/users.js');
 // Delete : DELETE '/:id'             7/7 |
 // ----------------------------------------
 
-router.get('/', (req, res) => {
-  // res.send('sessions new page');
-  res.render('user/index.ejs');
+// Index  : GET    '/'                1/7 |
+router.get('/new', (req, res) => {
+  // res.send('create new user page');
+  res.render('user/new.ejs');
 });
 
+
 // Create : POST   '/'                4/7 |
-// User login
+// Create new user
 router.post('/', (req, res) => {
   // res.send(req.body);
 
-  // User.findOne(
-  //   {
-  //     username: req.body.username
-  //   }, (error, foundUser) => {
-  //     if (req.body.password == foundUser.password) {
-  //       res.send('logged in');
-  //     } else {
-  //       res.send('wrong password');
-  //     };
-  //   }
-  // );
+  // Encrypt password on Create/register new user
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 
-  // Compare password on login
-  User.findOne(
-    {
-      username: req.body.username
-    }, (error, foundUser) => {
-      if (bcrypt.compareSync (req.body.password, foundUser.password)) {
-        req.session.currentuser = foundUser;
-        res.render('./user/index.ejs', {user:foundUser});
-      } else {
-        res.send('wrong password');
-      };
-    }
-  );
+  User.create(req.body, (error, createdUser) => {
+    if (error) {
+      res.send (error);
+    } else {
+      // res.send('Welcome ' + user.username + '!');
+      req.session.currentUser = createdUser;
+      // res.render('./index.ejs', {currentUser:createdUser});
+      res.redirect('./')
+    };
+  });
 });
 
 // ----------------------------------------
