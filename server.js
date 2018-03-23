@@ -34,9 +34,9 @@ app.use(session(
 // user
 const userController = require('./controllers/users.js');
 app.use('/user', userController);
-// register
-const registerController = require('./controllers/register.js');
-app.use('/register', registerController);
+// session
+const sessionController = require('./controllers/sessions.js');
+app.use('/session', sessionController);
 
 
 // ----------------------------------------
@@ -56,20 +56,9 @@ app.use('/register', registerController);
 
 // Index  : GET    '/'                1/7 |
 app.get( '/' , (req, res) => {
-  // res.send('Hello, World!');
-  res.render('index.ejs');
-});
-
-// GET    '/login'                        |
-app.get( '/login' , (req, res) => {
-  // res.send('users login in page');
-  res.render('login.ejs');
-});
-
-// GET    '/signup'                       |
-app.get( '/signup' , (req, res) => {
-  // res.send('users sign up page');
-  res.render('signup.ejs');
+  res.render('index.ejs', {
+    currentUser: req.session.currentUser
+  });
 });
 
 
