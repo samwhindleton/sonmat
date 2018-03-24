@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Edut User Recipe Page</h1>
+
+      <!-- log out button -->
+      <form action="/session?_method=DELETE" method="POST">
+        <button class="button" type="submit" formmethod="POST">log out</button>
+      </form>
+
+      <!-- recipe show page -->
+      <div class="row">
+        <form action="/recipe/<%=recipe.id%>?_method=PUT" method="POST">
+          <!-- title -->
+          <input type="text" name="title" value="<%=recipe.title;%>">
+          <!-- image -->
+          <input type="text" name="image" value="<%=recipe.image;%>">
+          <!-- description -->
+          <input type="text" name="description" value="<%=recipe.description;%>">
+          <!-- ingredients -->
+          <input type="text" name="ingredients" value="<%=recipe.ingredients;%>">
+          <!-- directions -->
+          <input type="text" name="directions" value="<%=recipe.directions;%>">
+          <!-- submit button -->
+          <button class="button" type="submit" formmethod="POST">submit</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <% include ../partials/footer %>
+    <!-- JavaScript -->
+    <% include ../partials/js %>
+  </body>
+</html>
