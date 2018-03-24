@@ -31,12 +31,15 @@ app.use(session(
 // ----------------------------------------
 // | CONTROLLERS                          |
 // ----------------------------------------
+// recipe
+const recipeController = require('./controllers/recipes.js');
+app.use('/recipe', recipeController);
+session
+const sessionController = require('./controllers/sessions.js');
+app.use('/session', sessionController);
 // user
 const userController = require('./controllers/users.js');
 app.use('/user', userController);
-// session
-const sessionController = require('./controllers/sessions.js');
-app.use('/session', sessionController);
 
 
 // ----------------------------------------
