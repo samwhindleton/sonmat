@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Recipes Index Page</h1>
+
+      <!-- all recipes -->
+      <div class="row">
+        <!-- display all recipes by newest -->
+        <% for (let i = recipes.length - 1; i >= 0; i--) { %>
+          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a>
+          <br>
+        <% } %>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <% include ../partials/footer %>
+    <!-- JavaScript -->
+    <% include ../partials/js %>
+  </body>
+</html>

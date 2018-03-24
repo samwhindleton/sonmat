@@ -29,7 +29,11 @@ const Recipe = require('../models/recipes.js');
 
 // Index  : GET    '/'                1/7 |
 router.get('/', (req, res) => {
-  res.send('all recipes page');
+  Recipe.find(req.params.id, (err, foundRecipe) => {
+    res.render('recipe/index.ejs', {
+      recipes: foundRecipe
+    });
+  });
 });
 
 router.get('/create', (req, res) => {
