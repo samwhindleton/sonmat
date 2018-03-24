@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Show Created Recipe Page</h1>
+
+      <!-- log out button -->
+      <form action="/session?_method=DELETE" method="POST">
+        <button class="button" type="submit" formmethod="POST">log out</button>
+      </form>
+
+      <!-- recipe show page -->
+      <div class="row">
+        <!-- created by user -->
+        Created by: <%=recipes.username;%>
+        <!-- title -->
+        Title: <%=recipes.title;%>
+        <!-- image -->
+        Image: <%=recipes.image;%>
+        <!-- description -->
+        Description: <%=recipes.description;%>
+        <!-- ingredients -->
+        Ingredients: <%=recipes.ingredients;%>
+        <!-- directions -->
+        Directions: <%=recipes.directions;%>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <% include ../partials/footer %>
+    <!-- JavaScript -->
+    <% include ../partials/js %>
+  </body>
+</html>
