@@ -63,6 +63,24 @@ router.post('/', (req, res) => {
   });
 });
 
+// Edit   : GET    '/:id/edit'        5/7 |
+router.get('/:id/edit', (req, res) => {
+  Recipe.findById(req.params.id, (error, foundRecipe) => {
+    res.render('recipe/edit.ejs', {
+      recipe: foundRecipe,
+      id: req.params.index
+    });
+  });
+});
+
+// Update : PUT    '/:id'             6/7 |
+router.put('/:id', (req, res) => {
+  Recipe.findByIdAndUpdate(req.params.id, req.body,
+  {new: true}, (error, updatedRecipe) => {
+    res.redirect('/recipe/' + updatedRecipe.id);
+  });
+});
+
 // ----------------------------------------
 // | MODULE EXPORTS                       |
 // ----------------------------------------
