@@ -29,12 +29,19 @@ app.use(session(
 
 
 // ----------------------------------------
+// | MODELS                               |
+// ----------------------------------------
+const Recipe = require('./models/recipes.js');
+
+
+// ----------------------------------------
 // | CONTROLLERS                          |
 // ----------------------------------------
 // recipe
 const recipeController = require('./controllers/recipes.js');
 app.use('/recipe', recipeController);
 session
+// session
 const sessionController = require('./controllers/sessions.js');
 app.use('/session', sessionController);
 // user
@@ -59,8 +66,11 @@ app.use('/user', userController);
 
 // Index  : GET    '/'                1/7 |
 app.get( '/' , (req, res) => {
-  res.render('index.ejs', {
-    currentUser: req.session.currentUser
+  Recipe.find(req.params.id, (err, foundRecipe) => {
+    res.render('index.ejs', {
+      currentUser: req.session.currentUser,
+      recipes: foundRecipe
+    });
   });
 });
 

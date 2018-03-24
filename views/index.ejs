@@ -46,6 +46,15 @@
         </h1>
       </div>
 
+      <!-- recipes -->
+      <div class="row">
+        <!-- display 3 newest recipes -->
+        <% for (let i = recipes.length - 1; i >= recipes.length - 3; i--) { %>
+          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a>
+          <br>
+        <% } %>
+      </div>
+
     </div>
 
     <!-- footer -->
