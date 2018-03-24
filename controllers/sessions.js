@@ -10,6 +10,7 @@ const router = express.Router();
 // | MODELS                               |
 // ----------------------------------------
 const User = require('../models/users.js');
+const Recipe = require('../models/recipes.js');
 
 
 // ----------------------------------------
@@ -33,8 +34,17 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/home', (req, res) => {
-  res.render('session/home.ejs', {
-    currentUser: req.session.currentUser
+  const currentUser = req.session.currentUser;
+  const user = currentUser.username;
+  // res.send(user);
+  Recipe.find(
+    {
+      username: {$all: user}
+    }, (error, allRecipes) => {
+    res.render('session/home.ejs', {
+      currentUser: req.session.currentUser,
+      recipes: allRecipes
+    });
   });
 });
 
