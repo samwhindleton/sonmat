@@ -20,7 +20,8 @@
 
       <!-- user created/added recipes -->
       <div class="row">
-        <% for (let i = 0; i < recipes.length; i++) { %>
+        <!-- display newest to oldest -->
+        <% for (let i = recipes.length - 1; i >= 0; i--) { %>
           <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a>
           <!-- edit button -->
           <form action="/recipe/<%=recipes[i].id;%>/edit" method="GET">
