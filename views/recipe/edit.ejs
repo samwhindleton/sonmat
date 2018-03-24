@@ -14,20 +14,32 @@
 
       <!-- recipe show page -->
       <div class="row">
-        <form action="/recipe/<%=recipe.id%>?_method=PUT" method="POST">
-          <!-- title -->
-          <input type="text" name="title" value="<%=recipe.title;%>">
+        <% if (currentUser) { %>
+          <form action="/recipe/<%=recipe.id%>?_method=PUT" method="POST">
+            <!-- title -->
+            <input type="text" name="title" value="<%=recipe.title;%>">
+            <!-- image -->
+            <input type="text" name="image" value="<%=recipe.image;%>">
+            <!-- description -->
+            <input type="text" name="description" value="<%=recipe.description;%>">
+            <!-- ingredients -->
+            <input type="text" name="ingredients" value="<%=recipe.ingredients;%>">
+            <!-- directions -->
+            <input type="text" name="directions" value="<%=recipe.directions;%>">
+            <!-- submit button -->
+            <button class="button" type="submit" formmethod="POST">submit</button>
+          </form>
+        <% } else { %>
+          <input type="text" name="title" value="<%=recipe.title;%>" readonly>
           <!-- image -->
-          <input type="text" name="image" value="<%=recipe.image;%>">
+          <input type="text" name="image" value="<%=recipe.image;%>" readonly>
           <!-- description -->
-          <input type="text" name="description" value="<%=recipe.description;%>">
+          <input type="text" name="description" value="<%=recipe.description;%>" readonly>
           <!-- ingredients -->
-          <input type="text" name="ingredients" value="<%=recipe.ingredients;%>">
+          <input type="text" name="ingredients" value="<%=recipe.ingredients;%>" readonly>
           <!-- directions -->
-          <input type="text" name="directions" value="<%=recipe.directions;%>">
-          <!-- submit button -->
-          <button class="button" type="submit" formmethod="POST">submit</button>
-        </form>
+          <input type="text" name="directions" value="<%=recipe.directions;%>" readonly>
+        <% } %>
       </div>
 
     </div>

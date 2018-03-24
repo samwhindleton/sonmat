@@ -65,12 +65,25 @@ router.post('/', (req, res) => {
 
 // Edit   : GET    '/:id/edit'        5/7 |
 router.get('/:id/edit', (req, res) => {
-  Recipe.findById(req.params.id, (error, foundRecipe) => {
-    res.render('recipe/edit.ejs', {
-      recipe: foundRecipe,
-      id: req.params.index
+  if (req.session.currentUser) {
+    Recipe.findById(req.params.id, (error, foundRecipe) => {
+      if (req.session.currentUser.username === foundRecipe.username) {
+        // res.send('you created this recipe');
+        res.render('recipe/edit.ejs', {
+          currentUser: req.session.currentUser,
+          id: req.params.index,
+          recipe: foundRecipe
+        });
+      } else {
+        // res.send('you did not create this recipe');
+        res.redirect('/recipe/' + foundRecipe.id);
+      };
     });
-  });
+  } else {
+    Recipe.findById(req.params.id, (err, foundRecipe) => {
+      res.redirect('/recipe/' + foundRecipe.id);
+    });
+  }
 });
 
 // Update : PUT    '/:id'             6/7 |
