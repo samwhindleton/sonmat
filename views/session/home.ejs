@@ -21,7 +21,12 @@
       <!-- user created/added recipes -->
       <div class="row">
         <% for (let i = 0; i < recipes.length; i++) { %>
-          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a><br>
+          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a>
+          <!-- edit button -->
+          <form action="/recipe/<%=recipes[i].id;%>/edit" method="GET">
+            <button class="button-primary" type="submit" formmethod="GET">edit</button>
+          </form>
+          <br>
         <% } %>
       </div>
 
