@@ -21,7 +21,7 @@
       <!-- user created/added recipes -->
       <div class="row">
         <% for (let i = 0; i < recipes.length; i++) { %>
-          <a href=""><%=recipes[i].title;%></a><br>
+          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a><br>
         <% } %>
       </div>
 

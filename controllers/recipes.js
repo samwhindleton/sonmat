@@ -38,6 +38,15 @@ router.get('/create', (req, res) => {
   });
 });
 
+// Show   : GET    '/:id'             2/7 |
+router.get('/:id', (req, res) => {
+  Recipe.findById(req.params.id, (err, foundRecipe) => {
+    res.render('recipe/show.ejs', {
+      recipes: foundRecipe
+    });
+  });
+});
+
 // Create : POST   '/'                4/7 |
 // create recipe
 router.post('/', (req, res) => {
@@ -48,7 +57,8 @@ router.post('/', (req, res) => {
     } else {
       // res.send(createdRecipe);
       // res.send('new recipe added!');
-      res.send(createdRecipe);
+      // res.send(createdRecipe);
+      res.redirect('/recipe/' + createdRecipe.id);
     }
   });
 });
