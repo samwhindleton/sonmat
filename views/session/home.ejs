@@ -18,6 +18,11 @@
         <button class="button" type="submit" formmethod="GET">new recipe</button>
       </form>
 
+      <!-- delete all button -->
+      <form action="/recipe/?_method=DELETE" method="POST">
+        <button class="button" type="submit" formmethod="POST">delete all</button>
+      </form>
+
       <!-- user created/added recipes -->
       <div class="row">
         <!-- display newest to oldest -->
@@ -26,6 +31,10 @@
           <!-- edit button -->
           <form action="/recipe/<%=recipes[i].id;%>/edit" method="GET">
             <button class="button-primary" type="submit" formmethod="GET">edit</button>
+          </form>
+          <!-- delete button -->
+          <form action="/recipe/<%=recipes[i].id;%>/?_method=DELETE" method="POST">
+            <button class="button" type="submit" formmethod="POST">delete</button>
           </form>
           <br>
         <% } %>

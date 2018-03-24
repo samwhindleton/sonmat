@@ -94,6 +94,24 @@ router.put('/:id', (req, res) => {
   });
 });
 
+// Delete : DELETE '/:id'             7/7 |
+router.delete('/:id', (req, res) => {
+  Recipe.findByIdAndRemove(req.params.id, (error, data) => {
+    res.redirect('/session/home');
+  });
+});
+
+router.delete('/', (req, res) => {
+  const currentUser = req.session.currentUser;
+  const user = currentUser.username;
+  Recipe.deleteMany(
+    {
+      username: {$all: user}
+    }, () => {
+      res.redirect('/session/home');
+  });
+});
+
 // ----------------------------------------
 // | MODULE EXPORTS                       |
 // ----------------------------------------
