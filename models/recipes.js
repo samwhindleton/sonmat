@@ -11,16 +11,14 @@ const mongoose = require('mongoose');
 // Setup              |                   |
 // --------------------                   |
 // ----------------------------------------
-const userSchema = new mongoose.Schema(
+const recipeSchema = new mongoose.Schema(
   {
-    username: {
-      type: String,
-      required: true
-    },
-    password: {
-      type: String,
-      required: true
-    }
+    username: {type: String, required: true},
+    title: {type: String, required: true},
+    image: String,
+    description: {type: String, required: true},
+    ingredients: {type: String, required: true},
+    directions: {type: String, required: true}
   }
 );
 
@@ -32,7 +30,7 @@ const userSchema = new mongoose.Schema(
 // Setup              |                   |
 // --------------------                   |
 // ----------------------------------------
-const User = mongoose.model('User', userSchema);
+const Recipe = mongoose.model('Recipe', recipeSchema);
 
 
 // ----------------------------------------
@@ -40,4 +38,4 @@ const User = mongoose.model('User', userSchema);
 // ----------------------------------------
 // Access Users in controllers/users.js   |
 // ----------------------------------------
-module.exports = User;
+module.exports = Recipe;
