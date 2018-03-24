@@ -41,6 +41,9 @@ const Recipe = require('./models/recipes.js');
 const recipeController = require('./controllers/recipes.js');
 app.use('/recipe', recipeController);
 session
+// seed
+const seedController = require('./controllers/seeds.js');
+app.use('/seed', seedController);
 // session
 const sessionController = require('./controllers/sessions.js');
 app.use('/session', sessionController);
