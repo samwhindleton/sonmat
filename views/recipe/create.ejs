@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create New Recipe Page</h1>
+
+      <!-- log out button -->
+      <form action="/session?_method=DELETE" method="POST">
+        <button class="button" type="submit" formmethod="POST">log out</button>
+      </form>
+
+      <!-- create new recipe -->
+      <div class="row">
+        <form action="/recipe" method="POST">
+          <!-- username -->
+          <input type="text" name="username" placeholder="<%=currentUser.username%>" value="<%=currentUser.username%>" readonly>
+          <!-- title -->
+          <input type="text" name="title" placeholder="title" required>
+          <!-- image -->
+          <input type="text" name="image" placeholder="image url">
+          <!-- description -->
+          <input type="text" name="description" placeholder="description" required>
+          <!-- ingredients -->
+          <input type="text" name="ingredients" placeholder="ingredients" required>
+          <!-- directions -->
+          <input type="text" name="directions" placeholder="directions" required>
+
+          <!-- create/submit -->
+          <button class="button" type="submit" formmethod="POST">create</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- footer -->
+    <% include ../partials/footer %>
+    <!-- JavaScript -->
+    <% include ../partials/js %>
+  </body>
+</html>
