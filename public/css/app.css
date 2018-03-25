@@ -1,5 +1,342 @@
-/* normalize css */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css");
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+fonts
+font-family: 'Nanum Pen Script', cursive;
+font-family: 'Open Sans', sans-serif;
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@import url('https://fonts.googleapis.com/css?family=Nanum+Pen+Script|Open+Sans&amp;subset=korean');
 
-/* skeleton css framework */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css");
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+normalize css
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css');
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+skeleton css framework
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css');
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+colors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+:root {
+  --pear: #69883a;
+  --lime: #a3b561;
+  --tomato: #c25244;
+  --cookbook: #ecebeb;
+  --paperbag: #655847;
+  --charcoal: #232121;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main style
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+body {
+  /* filter: grayscale(100%); */
+  width: 100vw;
+  background: var(--cookbook);
+  color: var(--charcoal);
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+ul, li {
+  margin: 0 auto;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+main container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.main {
+  background: var(--cookbook);
+  margin: 0 auto;
+  width: 100%;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+navigation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.navigation {
+  height: 7vh;
+  width: 100%;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  /* flexbox center done */
+  background: var(--tomato);
+  /* border-bottom: 0.01vmin solid var(--charcoal); */
+  position: fixed;
+  z-index: 1;
+}
+
+.main-navigation, .secondary-navigation {
+  height: 100%;
+  width: 40%;
+  display: inline-block;
+}
+
+.secondary-navigation {
+  width: 20%;
+}
+
+.main-navigation > ul, .secondary-navigation > ul,
+.main-navigation > ul > a, .secondary-navigation > ul > a {
+  height: 100%;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-navigation > ul > a, .secondary-navigation > ul > a, .logout > button {
+  height: 6.8vh;
+  color: var(--cookbook);
+  width: 10vmin;
+  font-size: 2vmin;
+  text-transform: capitalize;
+  transition-duration: 400ms;
+}
+
+.main-navigation > ul > a:hover, .secondary-navigation > ul > a:hover {
+  background: var(--cookbook);
+  color: var(--tomato);
+  transition-duration: 600ms;
+}
+
+.logout {
+  height: 7vh;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  /* flexbox center done */
+  margin: 0;
+}
+
+.logout > button {
+  border: 0;
+  border-radius: 0;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  transition-duration: 400ms;
+}
+
+.logout > button:hover {
+  background: var(--cookbook);
+  color: var(--tomato);
+  transition-duration: 600ms;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+header
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.header, .header-img, .header-img > img, .logo {
+  height: 100vh;
+  width: 100%;
+  /*
+  background image
+  background: url('/img/background.jpg') no-repeat bottom center fixed;
+  background-size: cover;
+  */
+}
+
+.header-img {
+  position: absolute;
+}
+
+.header-img > img {
+  object-fit: cover;
+  object-position: 50% 84%;
+  filter: grayscale(84%);
+}
+
+.logo {
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.logo > h1 {
+  color: var(--tomato);
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 30vmin;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+recipes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.recipes {
+  height: 79vh;
+  width: 100vw;
+  background: var(--cookbook);
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* fix to bottom */
+  padding: 7vh 0;
+}
+
+.recipes-show {
+  height: 29%;
+  width: 64vw;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.recipes-show > a {
+  height: 100%;
+  width: 64vw;
+  color: var(--cookbook);
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition-duration: 600ms;
+}
+
+.recipes-show > a:visited, .recipes-show > a:hover {
+  color: var(--cookbook);
+}
+
+.recipes-show > a:hover {
+  transform: scale(1.1, 1.1);
+  transition-duration: 400ms;
+}
+
+.recipes-show > a > img {
+  height: 100%;
+  width: 64vw;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.recipes-title {
+  height: 4.7vmin;
+  width: 64vw;
+  background: rgba(194, 82, 68, 0.8);
+  bottom: 0;
+  font-size: 2.7vmin;
+  overflow: scroll;
+  padding: 1vmin 0;
+  position: absolute;
+  text-align: center;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+about
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.about {
+  height: 93vh;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* fix to bottom */
+  background: var(--charcoal);
+}
+
+.about > p {
+  color: var(--cookbook);
+  font-size: 2.3vmin;
+  padding: 12vh 18vw;
+  text-align: justify;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+footer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.footer {
+  height: 26vmin;
+  width: 100%;
+  background: var(--cookbook);
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* fix to bottom */
+  bottom: 0;
+  position: relative;
+}
+
+.social-media {
+  height: 70%;
+  width: 60%;
+}
+
+.social-media > ul {
+  height: 100%;
+  width: 100%;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.fa-github, .fa-linkedin-in, .fa-twitter {
+  color: var(--tomato);
+  font-size: 5.7vmin;
+  transition-duration: 600ms;
+}
+
+.fa-github:hover, .fa-linkedin-in:hover, .fa-twitter:hover {
+  color: var(--pear);
+  transform: scale(1.2, 1.2);
+  transition-duration: 400ms;
+}
+
+.rights {
+  height: 30%;
+  width: 100%;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  /* flexbox center done */
+  color: var(--charcoal);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8vmin;
+  text-transform: uppercase;
+}
+
+.rights > a, .rights > a:visited {
+  color: var(--tomato);
+}
+
+.rights > a:hover {
+  color: var(--pear);
+}
