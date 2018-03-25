@@ -30,7 +30,9 @@ const Recipe = require('../models/recipes.js');
 
 // Index  : GET    '/'                1/7 |
 router.get('/new', (req, res) => {
-  res.render('session/new.ejs');
+  res.render('session/new.ejs', {
+    currentUser: req.session.currentUser
+  });
 });
 
 router.get('/home', (req, res) => {
@@ -88,11 +90,16 @@ router.post('/', (req, res) => {
           req.session.currentUser = foundUser;
           res.redirect('./');
         } else {
-          res.send('wrong password');
+          // res.send('wrong password');
+          res.render('session/new.ejs', {
+            currentUser: req.session.currentUser
+          });
         };
       } else {
         // res.send('username or password incorrect');
-        res.render('session/new.ejs');
+        res.render('session/new.ejs', {
+          currentUser: req.session.currentUser
+        });
       };
     }
   );

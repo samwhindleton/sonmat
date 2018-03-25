@@ -29,7 +29,7 @@ const Recipe = require('../models/recipes.js');
 
 // Index  : GET    '/'                1/7 |
 router.get('/', (req, res) => {
-  Recipe.find(req.params.id, (err, foundRecipe) => {
+  Recipe.find(req.params.id, (error, foundRecipe) => {
     res.render('recipe/index.ejs', {
       recipes: foundRecipe
     });
@@ -44,7 +44,7 @@ router.get('/create', (req, res) => {
 
 // Show   : GET    '/:id'             2/7 |
 router.get('/:id', (req, res) => {
-  Recipe.findById(req.params.id, (err, foundRecipe) => {
+  Recipe.findById(req.params.id, (error, foundRecipe) => {
     res.render('recipe/show.ejs', {
       recipes: foundRecipe
     });
@@ -84,7 +84,7 @@ router.get('/:id/edit', (req, res) => {
       };
     });
   } else {
-    Recipe.findById(req.params.id, (err, foundRecipe) => {
+    Recipe.findById(req.params.id, (error, foundRecipe) => {
       res.redirect('/recipe/' + foundRecipe.id);
     });
   }

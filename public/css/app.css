@@ -39,6 +39,7 @@ body {
   width: 100vw;
   background: var(--cookbook);
   color: var(--charcoal);
+  font-family: 'Open Sans', sans-serif;
   /* flexbox center */
   align-items: center;
   display: flex;
@@ -64,12 +65,31 @@ ul {
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main container
+main containers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .main {
+  width: 100%;
   background: var(--cookbook);
   margin: 0 auto;
-  width: 100%;
+}
+
+.main-login {
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+}
+
+.login-container {
+  height: 50vmin;
+  width: 50%;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flexbox center done */
+  background: var(--charcoal);
+  margin: 0 auto;
 }
 
 
@@ -154,13 +174,17 @@ navigation
 header
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .header, .header-img, .header-img > img, .logo {
-  height: 100vh;
+  height: 93vh;
   width: 100%;
   /*
   background image
   background: url('/img/background.jpg') no-repeat bottom center fixed;
   background-size: cover;
   */
+}
+
+.header {
+  margin-top: 7vh;
 }
 
 .header-img {
@@ -339,4 +363,55 @@ footer
 
 .rights > a:hover {
   color: var(--pear);
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+log in / sign up page style
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.logo-partial {
+  width: 100%;
+}
+
+.logo-partial > h1 {
+  color: var(--tomato);
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 15vmin;
+  margin: 0;
+  margin-top: 7vh;
+  text-align: center;
+}
+
+.login-container > h1 {
+  color: var(--cookbook);
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.login-container > form {
+  height: 50%;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* flexbox center done */
+  margin-top: 5vh;
+}
+
+.login-container > form > input, .login-container > form > button {
+  height: 24%;
+  width: 200%;
+  font-size: 1.8vmin;
+  border-radius: 0;
+}
+
+.login-container > form > button {
+  background: var(--lime);
+  border: var(--lime);
+}
+
+.login-container > form > button:hover {
+  background: var(--pear);
+  border: var(--pear);
 }

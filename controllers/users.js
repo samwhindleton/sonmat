@@ -30,7 +30,9 @@ const User = require('../models/users.js');
 // Index  : GET    '/'                1/7 |
 router.get('/new', (req, res) => {
   // res.send('create new user page');
-  res.render('user/new.ejs');
+  res.render('user/new.ejs', {
+    currentUser: req.session.currentUser
+  });
 });
 
 
@@ -43,7 +45,10 @@ router.post('/', (req, res) => {
       username: req.body.username
     }, (error, foundUser) => {
       if (foundUser) {
-        res.send('username already taken');
+        // res.send('username already taken');
+        res.render('user/new.ejs', {
+          currentUser: req.session.currentUser
+        });
       } else {
         // Encrypt password on Create/register new user
         req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));

@@ -40,9 +40,9 @@ router.get('/add-new-recipes', (req, res) => {
     },
   ];
   // create recipes from newRecipes
-  Recipe.create(newRecipes, (err, recipe) => {
-    if (err) {
-      res.send(err);
+  Recipe.create(newRecipes, (error, recipe) => {
+    if (error) {
+      res.send(error);
     }
     res.redirect('/recipe');
   });

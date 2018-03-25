@@ -5,26 +5,26 @@
     <% include ../partials/head %>
   </head>
   <body>
-    <div class="container">
-      <h1>Sign Up Page</h1>
+    <div class="main-login">
+      <% include ../partials/nav %>
+      <% include ../partials/logo %>
 
-      <!-- sign up -->
-      <div class="row">
+      <div class="login-container">
+        <h1>sign up</h1>
+
         <form action="/user" method="POST">
           <!-- username -->
-          <input type="text" name="username" placeholder="username" required>
+          <input type="text" name="username" placeholder="User Name" required autocomplete="off" maxlength="15" minlength="5">
           <!-- password -->
-          <input type="text" name="password" placeholder="password" required>
+          <input type="text" name="password" placeholder="Password" required autocomplete="off" maxlength="30" minlength="8">
           <!-- create/submit -->
-          <button class="button" type="submit" formmethod="POST">sign up</button>
+          <button class="button-primary" type="submit" formmethod="POST">sign up</button>
         </form>
-
       </div>
 
+      <!-- footer -->
+      <% include ../partials/footer %>
     </div>
-
-    <!-- footer -->
-    <% include ../partials/footer %>
     <!-- JavaScript -->
     <% include ../partials/js %>
   </body>

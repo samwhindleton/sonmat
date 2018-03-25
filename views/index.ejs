@@ -5,56 +5,7 @@
   </head>
   <body id="home">
     <div class="main">
-      <!-- navigation -->
-      <div class="navigation">
-        <!-- main navigation -->
-        <div class="main-navigation">
-          <ul>
-            <!-- home -->
-            <a href="/">
-              <li>home</li>
-            </a>
-            <!-- recipes -->
-            <a href="/recipe">
-              <li>recipes</li>
-            </a>
-            <!-- about -->
-            <a href="#about">
-              <li>about</li>
-            </a>
-            <!-- contact -->
-            <a href="#contact">
-              <li>contact</li>
-            </a>
-          </ul>
-
-        </div>
-        <!-- log out / user home OR log in / sign up buttons -->
-        <div class="secondary-navigation">
-          <ul>
-            <% if (currentUser) { %>
-              <a href="/session/home">
-                <li>my home</li>
-              </a>
-
-              <form class="logout" action="/session?_method=DELETE" method="POST">
-                <button>
-                  <li>log out</li>
-                </button>
-              </form>
-            <% } else { %>
-              <a href="/user/new">
-                <li>sign up</li>
-              </a>
-
-              <a href="/session/new">
-                <li>log in</li>
-              </a>
-            <% } %>
-          </ul>
-        </div>
-
-      </div>
+      <% include partials/nav %>
 
       <!-- header -->
       <div class="header">

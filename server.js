@@ -69,7 +69,7 @@ app.use('/user', userController);
 
 // Index  : GET    '/'                1/7 |
 app.get( '/' , (req, res) => {
-  Recipe.find(req.params.id, (err, foundRecipe) => {
+  Recipe.find(req.params.id, (error, foundRecipe) => {
     res.render('index.ejs', {
       currentUser: req.session.currentUser,
       recipes: foundRecipe
