@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Recipes | Sonmat</title>
     <% include ../partials/head %>
   </head>
   <body>
-    <div class="container">
-      <h1>Recipes Index Page</h1>
+    <div class="main">
+      <% include ../partials/nav %>
+      <% include ../partials/logo %>
 
       <!-- all recipes -->
-      <div class="row">
-        <!-- display all recipes by newest -->
+      <div class="row recipes-index">
+        <!-- display 3 newest recipes -->
         <% for (let i = recipes.length - 1; i >= 0; i--) { %>
-          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a>
-          <br>
+          <div class="recipes-index-show">
+            <a href="/recipe/<%=recipes[i].id;%>">
+              <img src="<%=recipes[i].image;%>" alt="">
+              <p class="recipes-index-title"><%=recipes[i].title;%></p>
+            </a>
+          </div>
         <% } %>
       </div>
 
+      <!-- footer -->
+      <% include ../partials/footer %>
     </div>
-
-    <!-- footer -->
-    <% include ../partials/footer %>
     <!-- JavaScript -->
     <% include ../partials/js %>
   </body>

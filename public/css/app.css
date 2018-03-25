@@ -415,3 +415,72 @@ log in / sign up page style
   background: var(--pear);
   border: var(--pear);
 }
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+recipes index page
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.recipes-index {
+  width: 100vw;
+  background: var(--cookbook);
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* fix to bottom */
+  padding: 7vh 0;
+}
+
+.recipes-index-show:nth-child(1) {
+  padding-top: 0;
+}
+.recipes-index-show {
+  height: 29%;
+  width: 64vw;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 5vh;
+  position: relative;
+}
+
+.recipes-index-show > a {
+  height: 100%;
+  width: 64vw;
+  color: var(--cookbook);
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition-duration: 600ms;
+}
+
+.recipes-index-show > a:visited, .recipes-index-show > a:hover {
+  color: var(--cookbook);
+}
+
+.recipes-index-show > a:hover {
+  transform: scale(1.1, 1.1);
+  transition-duration: 400ms;
+}
+
+.recipes-index-show > a > img {
+  height: 100%;
+  width: 64vw;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.recipes-index-title {
+  height: 4.7vmin;
+  width: 64vw;
+  background: rgba(194, 82, 68, 0.8);
+  bottom: 0;
+  font-size: 2.7vmin;
+  overflow: scroll;
+  padding: 1vmin 0;
+  position: absolute;
+  text-align: center;
+}

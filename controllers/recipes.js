@@ -10,6 +10,7 @@ const router = express.Router();
 // | MODELS                               |
 // ----------------------------------------
 const Recipe = require('../models/recipes.js');
+// const User = require('../models/users.js');
 
 
 // ----------------------------------------
@@ -31,7 +32,8 @@ const Recipe = require('../models/recipes.js');
 router.get('/', (req, res) => {
   Recipe.find(req.params.id, (error, foundRecipe) => {
     res.render('recipe/index.ejs', {
-      recipes: foundRecipe
+      recipes: foundRecipe,
+      currentUser: req.session.currentUser
     });
   });
 });
@@ -46,7 +48,8 @@ router.get('/create', (req, res) => {
 router.get('/:id', (req, res) => {
   Recipe.findById(req.params.id, (error, foundRecipe) => {
     res.render('recipe/show.ejs', {
-      recipes: foundRecipe
+      recipes: foundRecipe,
+      currentUser: req.session.currentUser
     });
   });
 });
