@@ -92,6 +92,12 @@ main containers
   margin: 0 auto;
 }
 
+.recipes-main-container {
+  color: var(--cookbook);
+  background: var(--charcoal);
+  padding: 12vmin;
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navigation
@@ -105,8 +111,8 @@ navigation
   justify-content: space-between;
   /* flexbox center done */
   background: var(--tomato);
-  /* border-bottom: 0.01vmin solid var(--charcoal); */
   position: fixed;
+  user-select: none;
   z-index: 1;
 }
 
@@ -163,7 +169,7 @@ navigation
   transition-duration: 400ms;
 }
 
-.logout > button:hover {
+.logout > button:hover, .logout > button:focus {
   background: var(--cookbook);
   color: var(--tomato);
   transition-duration: 600ms;
@@ -380,12 +386,14 @@ log in / sign up page style
   margin: 0;
   margin-top: 7vh;
   text-align: center;
+  user-select: none;
 }
 
 .login-container > h1 {
   color: var(--cookbook);
   margin: 0;
   text-transform: capitalize;
+  user-select: none;
 }
 
 .login-container > form {
@@ -401,17 +409,20 @@ log in / sign up page style
 
 .login-container > form > input, .login-container > form > button {
   height: 24%;
-  width: 200%;
+  width: 150%;
   font-size: 1.8vmin;
   border-radius: 0;
 }
 
 .login-container > form > button {
+  min-height: 24%;
   background: var(--lime);
   border: var(--lime);
+  line-height: 0;
+  user-select: none;
 }
 
-.login-container > form > button:hover {
+.login-container > form > button:hover, .login-container > form > button:focus {
   background: var(--pear);
   border: var(--pear);
 }
@@ -467,6 +478,7 @@ recipes index page
 }
 
 .recipes-index-show > a > img {
+  max-height: 42vw;
   height: 100%;
   width: 64vw;
   object-fit: cover;
@@ -483,4 +495,185 @@ recipes index page
   padding: 1vmin 0;
   position: absolute;
   text-align: center;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+create / edit / view page style
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.row-top, .row-bottom {
+  /* border: 1px solid red; */
+  font-size: 2.7vmin;
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  /* flexbox center done */
+}
+
+.row-top > .five > p, .row-bottom > p, .recipes-show-page-title {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 3.7vmin;
+}
+.row-top > .input-field > input {
+  width: 97%;
+  margin: 1vmin;
+  border-radius: 0;
+}
+
+.textarea-field > textarea {
+  min-height: 6em;
+  max-width: 100%;
+  min-width: 100%;
+  width: 100%;
+  border-radius: 0;
+  font-size: 2.7vmin;
+  line-height: 1.2;
+}
+
+.textarea-field > img {
+  max-height: 42vw;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.create-button-row > button {
+  min-height: 2.3em;
+  width: 100%;
+  background: var(--lime);
+  border: var(--lime);
+  border-radius: 0;
+  font-size: 3.4vmin;
+  line-height: 0;
+  margin-top: 7%;
+  user-select: none;
+}
+
+.create-button-row > button:focus, .create-button-row > button:hover {
+  background: var(--pear);
+  border: var(--pear);
+}
+
+.recipes-show-page-title {
+  font-size: 7vmin;
+  line-height: 0.9;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  text-align: center;
+  /* text-decoration: underline; */
+}
+
+.created-by {
+  color: var(--lime);
+}
+
+.recipes-show-page-info {
+  background: var(--cookbook);
+  color: var(--paperbag);
+  font-size: 2.3vmin;
+  line-height: 1.9;
+  padding: 1.5vmin 2.5vmin;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+user home style
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.logo-partial-user {
+  width: 100%;
+}
+
+.logo-partial-user > h1 {
+  color: var(--charcoal);
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 11vmin;
+  margin: 0;
+  margin-top: 7vh;
+  text-align: center;
+  user-select: none;
+}
+
+.home-container {
+  min-height: 54vh;
+}
+
+.user-home {
+  min-
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.user-home > form {
+  margin: 0 4vmin;
+}
+
+.user-home > form > button {
+  min-height: 2.3em;
+  min-width: 80%;
+  background: var(--lime);
+  border: var(--lime);
+  border-radius: 0;
+  font-size: 2.9vmin;
+  line-height: 0;
+  margin-top: 20%;
+  user-select: none;
+}
+
+.user-home > form > button:focus, .user-home > form > button:hover {
+  background: var(--pear);
+  border: var(--pear);
+}
+
+.user-recipes-show {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 4.3vmin 0;
+}
+
+.user-recipes-show > p {
+  font-size: 4.3vmin;
+}
+
+.user-recipes-show > a > img {
+  max-height: 20vw;
+  min-height: 20vw;
+  height: 100%;
+  width: 32vw;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.user-home-buttons {
+  /* flexbox center */
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.user-home-buttons > form {
+  margin: 0 4vmin;
+}
+
+.user-home-buttons > form > button {
+  min-height: 2.3em;
+  min-width: 80%;
+  background: var(--lime);
+  border: var(--lime);
+  border-radius: 0;
+  font-size: 2vmin;
+  line-height: 0;
+  margin-top: 20%;
+  user-select: none;
+}
+
+.user-home-buttons > form > button:focus, .user-home-buttons > form > button:hover {
+  background: var(--pear);
+  border: var(--pear);
 }

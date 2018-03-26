@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Recipes | Sonmat</title>
+    <title>All Recipes | Sonmat</title>
     <% include ../partials/head %>
   </head>
   <body>
@@ -11,11 +11,11 @@
 
       <!-- all recipes -->
       <div class="row recipes-index">
-        <!-- display 3 newest recipes -->
+        <!-- display recipes by newest -->
         <% for (let i = recipes.length - 1; i >= 0; i--) { %>
           <div class="recipes-index-show">
             <a href="/recipe/<%=recipes[i].id;%>">
-              <img src="<%=recipes[i].image;%>" alt="">
+              <img src="<%=recipes[i].image;%>" alt="<%=recipes[i].title;%>">
               <p class="recipes-index-title"><%=recipes[i].title;%></p>
             </a>
           </div>

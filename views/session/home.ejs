@@ -1,49 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>My Home | Sonmat</title>
     <% include ../partials/head %>
   </head>
-  <body>
-    <div class="container">
-      <h1>Logged In Page</h1>
+  <body id="home">
+    <div class="main">
+      <% include ../partials/nav %>
 
-      <h1><%=currentUser.username%> user page</h1>
-
-      <!-- log out button -->
-      <form action="/session?_method=DELETE" method="POST">
-        <button class="button" type="submit" formmethod="POST">log out</button>
-      </form>
-
-      <form action="/recipe/create" method="GET">
-        <button class="button" type="submit" formmethod="GET">new recipe</button>
-      </form>
-
-      <!-- delete all button -->
-      <form action="/recipe/?_method=DELETE" method="POST">
-        <button class="button" type="submit" formmethod="POST">delete all</button>
-      </form>
-
-      <!-- user created/added recipes -->
-      <div class="row">
-        <!-- display newest to oldest -->
-        <% for (let i = recipes.length - 1; i >= 0; i--) { %>
-          <a href="/recipe/<%=recipes[i].id;%>"><%=recipes[i].title;%></a>
-          <!-- edit button -->
-          <form action="/recipe/<%=recipes[i].id;%>/edit" method="GET">
-            <button class="button-primary" type="submit" formmethod="GET">edit</button>
-          </form>
-          <!-- delete button -->
-          <form action="/recipe/<%=recipes[i].id;%>/?_method=DELETE" method="POST">
-            <button class="button" type="submit" formmethod="POST">delete</button>
-          </form>
-          <br>
-        <% } %>
+      <div class="logo-partial-user">
+        <h1><%=currentUser.username%>'s recipes </h1>
       </div>
 
-    </div>
+      <div class="container home-container">
+        <div class="row user-home">
+          <!-- create button -->
+          <form action="/recipe/create" method="GET">
+            <button class="button-primary" type="submit" formmethod="GET">new recipe</button>
+          </form>
 
-    <!-- footer -->
-    <% include ../partials/footer %>
+          <!-- delete all button -->
+          <form action="/recipe/?_method=DELETE" method="POST">
+            <button class="button-primary" type="submit" formmethod="POST">delete all</button>
+          </form>
+        </div>
+
+        <!-- recipes -->
+        <div class="row">
+          <!-- display user recipes by newest -->
+          <% for (let i = recipes.length - 1; i >= 0; i--) { %>
+            <div class="user-recipes-show">
+              <p class=""><%=recipes[i].title;%></p>
+              <a href="/recipe/<%=recipes[i].id;%>">
+                <img src="<%=recipes[i].image;%>" alt="">
+              </a>
+
+              <div class="user-home-buttons">
+                <!-- edit user recipe -->
+                <form action="/recipe/<%=recipes[i].id;%>/edit" method="GET">
+                  <button class="button-primary" type="submit" formmethod="GET">edit</button>
+                </form>
+
+                <!-- delete user recipe -->
+                <form action="/recipe/<%=recipes[i].id;%>/?_method=DELETE" method="POST">
+                  <button class="button-primary" type="submit" formmethod="POST">delete</button>
+                </form>
+              </div>
+            </div>
+          <% } %>
+        </div>
+      </div>
+
+      <!-- footer -->
+      <% include ../partials/footer %>
+    </div>
     <!-- JavaScript -->
     <% include ../partials/js %>
   </body>

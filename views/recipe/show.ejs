@@ -1,37 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title><%=recipes.title;%> | Sonmat</title>
     <% include ../partials/head %>
   </head>
   <body>
-    <div class="container">
-      <h1>Show Created Recipe Page</h1>
+    <div class="main">
+      <% include ../partials/nav %>
+      <% include ../partials/logo %>
 
-      <!-- log out button -->
-      <form action="/session?_method=DELETE" method="POST">
-        <button class="button" type="submit" formmethod="POST">log out</button>
-      </form>
+      <div class="container recipes-main-container">
+        <!-- create new recipe -->
+        <div class="recipes-show-page">
 
-      <!-- recipe show page -->
-      <div class="row">
-        <!-- created by user -->
-        Created by: <%=recipes.username;%>
-        <!-- title -->
-        Title: <%=recipes.title;%>
-        <!-- image -->
-        Image: <%=recipes.image;%>
-        <!-- description -->
-        Description: <%=recipes.description;%>
-        <!-- ingredients -->
-        Ingredients: <%=recipes.ingredients;%>
-        <!-- directions -->
-        Directions: <%=recipes.directions;%>
+          <!-- title -->
+          <div class="row recipes-show-page-title">
+            <%=recipes.title;%>
+          </div>
+
+          <!-- username -->
+          <div class="row row-top">
+            <p class="created-by">Created By <%=recipes.username;%></p>
+          </div>
+
+          <hr>
+
+          <!-- image -->
+          <div class="row row-bottom">
+            <p>Image</p>
+          </div>
+          <div class="row textarea-field">
+            <img src="<%=recipes.image;%>" alt="">
+          </div>
+
+          <hr>
+
+          <!-- description -->
+          <div class="row row-bottom">
+            <p>Description</p>
+          </div>
+          <div class="row textarea-field">
+            <p class="recipes-show-page-info"><%=recipes.description;%></p>
+          </div>
+
+          <hr>
+
+          <!-- ingredients -->
+          <div class="row row-bottom">
+            <p>Ingredients</p>
+          </div>
+          <div class="row textarea-field">
+            <p class="recipes-show-page-info"><%=recipes.ingredients;%></p>
+          </div>
+
+          <hr>
+
+          <!-- directions -->
+          <div class="row row-bottom">
+            <p>Directions</p>
+          </div>
+          <div class="row textarea-field">
+            <p class="recipes-show-page-info"><%=recipes.directions;%></p>
+          </div>
+        </div>
+
       </div>
 
+      <!-- footer -->
+      <% include ../partials/footer %>
     </div>
-
-    <!-- footer -->
-    <% include ../partials/footer %>
     <!-- JavaScript -->
     <% include ../partials/js %>
   </body>

@@ -1,51 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Edit Recipe | Sonmat</title>
     <% include ../partials/head %>
   </head>
   <body>
-    <div class="container">
-      <h1>Edut User Recipe Page</h1>
+    <div class="main">
+      <% include ../partials/nav %>
+      <% include ../partials/logo %>
 
-      <!-- log out button -->
-      <form action="/session?_method=DELETE" method="POST">
-        <button class="button" type="submit" formmethod="POST">log out</button>
-      </form>
+      <div class="container recipes-main-container">
+        <!-- edit recipe -->
+        <form action="/recipe/<%=recipe.id%>?_method=PUT" method="POST">
 
-      <!-- recipe show page -->
-      <div class="row">
-        <% if (currentUser) { %>
-          <form action="/recipe/<%=recipe.id%>?_method=PUT" method="POST">
-            <!-- title -->
-            <input type="text" name="title" value="<%=recipe.title;%>">
-            <!-- image -->
-            <input type="text" name="image" value="<%=recipe.image;%>">
-            <!-- description -->
-            <input type="text" name="description" value="<%=recipe.description;%>">
-            <!-- ingredients -->
-            <input type="text" name="ingredients" value="<%=recipe.ingredients;%>">
-            <!-- directions -->
-            <input type="text" name="directions" value="<%=recipe.directions;%>">
-            <!-- submit button -->
-            <button class="button" type="submit" formmethod="POST">submit</button>
-          </form>
-        <% } else { %>
-          <input type="text" name="title" value="<%=recipe.title;%>" readonly>
+          <!-- username -->
+          <div class="row row-top">
+            <div class="five columns">
+              <p>Created By</p>
+            </div>
+            <div class="seven columns input-field">
+              <input type="text" name="username" placeholder="<%=currentUser.username%>" value="<%=currentUser.username%>" readonly>
+            </div>
+          </div>
+
+          <!-- title -->
+          <div class="row row-top">
+            <div class="five columns">
+              <p>Title</p>
+            </div>
+            <div class="seven columns input-field">
+              <input type="text" name="title" value="<%=recipe.title;%>" maxlength="30" minlength="5" required>
+            </div>
+          </div>
+
           <!-- image -->
-          <input type="text" name="image" value="<%=recipe.image;%>" readonly>
+          <div class="row row-top">
+            <div class="five columns">
+              <p>Image</p>
+            </div>
+            <div class="seven columns input-field">
+              <input type="text" name="image" value="<%=recipe.image;%>" minlength="5" required>
+            </div>
+          </div>
+
+          <hr>
+
           <!-- description -->
-          <input type="text" name="description" value="<%=recipe.description;%>" readonly>
+          <div class="row row-bottom">
+            <p>Description</p>
+          </div>
+          <div class="row textarea-field">
+            <textarea type="text" name="description" maxlength="5000" minlength="5" required><%=recipe.description;%></textarea>
+          </div>
+
           <!-- ingredients -->
-          <input type="text" name="ingredients" value="<%=recipe.ingredients;%>" readonly>
+          <div class="row row-bottom">
+            <p>Ingredients</p>
+          </div>
+          <div class="row textarea-field">
+            <textarea type="text" name="ingredients" maxlength="5000" minlength="5" required><%=recipe.ingredients;%></textarea>
+          </div>
+
           <!-- directions -->
-          <input type="text" name="directions" value="<%=recipe.directions;%>" readonly>
-        <% } %>
+          <div class="row row-bottom">
+            <p>Directions</p>
+          </div>
+          <div class="row textarea-field">
+            <textarea type="text" name="directions" maxlength="5000" minlength="5" required><%=recipe.directions;%></textarea>
+          </div>
+
+          <div class="row create-button-row">
+            <!-- create button -->
+            <button class="button-primary" type="submit" formmethod="POST">submit</button>
+          </div>
+        </form>
+
       </div>
 
+      <!-- footer -->
+      <% include ../partials/footer %>
     </div>
-
-    <!-- footer -->
-    <% include ../partials/footer %>
     <!-- JavaScript -->
     <% include ../partials/js %>
   </body>

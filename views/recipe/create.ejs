@@ -1,42 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Create Recipe | Sonmat</title>
     <% include ../partials/head %>
   </head>
   <body>
-    <div class="container">
-      <h1>Create New Recipe Page</h1>
+    <div class="main">
+      <% include ../partials/nav %>
+      <% include ../partials/logo %>
 
-      <!-- log out button -->
-      <form action="/session?_method=DELETE" method="POST">
-        <button class="button" type="submit" formmethod="POST">log out</button>
-      </form>
-
-      <!-- create new recipe -->
-      <div class="row">
+      <div class="container recipes-main-container">
+        <!-- create new recipe -->
         <form action="/recipe" method="POST">
-          <!-- username -->
-          <input type="text" name="username" placeholder="<%=currentUser.username%>" value="<%=currentUser.username%>" readonly>
-          <!-- title -->
-          <input type="text" name="title" placeholder="title" required>
-          <!-- image -->
-          <input type="text" name="image" placeholder="image url">
-          <!-- description -->
-          <input type="text" name="description" placeholder="description" required>
-          <!-- ingredients -->
-          <input type="text" name="ingredients" placeholder="ingredients" required>
-          <!-- directions -->
-          <input type="text" name="directions" placeholder="directions" required>
 
-          <!-- create/submit -->
-          <button class="button" type="submit" formmethod="POST">create</button>
+          <!-- username -->
+          <div class="row row-top">
+            <div class="five columns">
+              <p>Created By</p>
+            </div>
+            <div class="seven columns input-field">
+              <input type="text" name="username" placeholder="<%=currentUser.username%>" value="<%=currentUser.username%>" readonly>
+            </div>
+          </div>
+
+          <!-- title -->
+          <div class="row row-top">
+            <div class="five columns">
+              <p>Title</p>
+            </div>
+            <div class="seven columns input-field">
+              <input type="text" name="title" placeholder="Homemade Pepperoni Pizza" maxlength="30" minlength="5" required>
+            </div>
+          </div>
+
+          <!-- image -->
+          <div class="row row-top">
+            <div class="five columns">
+              <p>Image</p>
+            </div>
+            <div class="seven columns input-field">
+              <input type="text" name="image" placeholder="http://imgur.com/5NpSA7z.jpg" minlength="5" required>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- description -->
+          <div class="row row-bottom">
+            <p>Description</p>
+          </div>
+          <div class="row textarea-field">
+            <textarea type="text" name="description" placeholder="Classic favorite pepperoni pizza in less than 30 minutes." maxlength="5000" minlength="5" required></textarea>
+          </div>
+
+          <!-- ingredients -->
+          <div class="row row-bottom">
+            <p>Ingredients</p>
+          </div>
+          <div class="row textarea-field">
+            <textarea type="text" name="ingredients" placeholder="1 cup tomato-and-basil pasta sauce
+10-oz Italian pizza crust
+1/4 cup pepperoni slices
+1 1/2 cups mozzarella cheese" maxlength="5000" minlength="5" required></textarea>
+          </div>
+
+          <!-- directions -->
+          <div class="row row-bottom">
+            <p>Directions</p>
+          </div>
+          <div class="row textarea-field">
+            <textarea type="text" name="directions" placeholder="1. Preheat oven to 400°F.
+2. Place pizza on baking sheet on center rack of oven.
+3. Bake for 18-20 minutes or until golden brown." maxlength="5000" minlength="5" required></textarea>
+          </div>
+
+          <div class="row create-button-row">
+            <!-- create button -->
+            <button class="button-primary" type="submit" formmethod="POST">create</button>
+          </div>
         </form>
+
       </div>
 
+      <!-- footer -->
+      <% include ../partials/footer %>
     </div>
-
-    <!-- footer -->
-    <% include ../partials/footer %>
     <!-- JavaScript -->
     <% include ../partials/js %>
   </body>
