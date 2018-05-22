@@ -18,7 +18,7 @@ Create, edit, delete own recipes, and view all user submitted recipes.
 
 [mongoDB](https://www.mongodb.com/)  
 [Express](https://expressjs.com/)  
-EJS
+EJS  
 [Node.js](https://nodejs.org/)
 
 **Node Dependencies**  
